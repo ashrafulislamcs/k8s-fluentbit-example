@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  namespace: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: sammy/do-webapp
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /test/
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /test/
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
