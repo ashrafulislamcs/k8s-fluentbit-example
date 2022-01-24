@@ -44,3 +44,7 @@ Navigate to `http://localhost:3000` to generate some logs.
 ```bash
 kubectl port-forward svc/kibana -n kube-logging 5601:5601
 ```
+
+## Searching through logs
+
+Navigate to `http://127.0.0.1:5601` to view logs in kabana.
