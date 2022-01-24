@@ -19,7 +19,7 @@ minikube start
 - Run k8s deploy to minikube
 
 ```bash
-chmox +x up.sh && ./up.sh deploy
+chmod +x up.sh && ./up.sh deploy
 ```
 
 ## Destroying resources
