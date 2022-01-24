@@ -1,17 +1,15 @@
-FROM elixir:1.12.3
+FROM node:16-alpine3.14
 
-RUN mix local.hex --force \
-  && mix archive.install hex phx_new \
-  && apt-get update \
-  && curl -sL https://deb.nodesource.com/setup_12.x | bash \
-  && apt-get install -y apt-utils \
-  && apt-get install -y nodejs \
-  && apt-get install -y build-essential \
-  && apt-get install -y inotify-tools \
-  && mix local.rebar --force
+WORKDIR /usr/src/app
 
-WORKDIR /app
+COPY package.json .
 
-COPY . .
+RUN npm i
 
-EXPOSE 4000
+ADD . /usr/src/app
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD [ "npm", "start" ]

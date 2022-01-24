@@ -15,19 +15,19 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: sammy/do-webapp
+        image: brodeynewman/barge-api
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
             scheme: HTTP
-            path: /test/
-            port: 8000
+            path: /
+            port: 3000
           initialDelaySeconds: 30
           periodSeconds: 10
         readinessProbe:
           httpGet:
             scheme: HTTP
-            path: /test/
-            port: 8000
+            path: /
+            port: 3000
           initialDelaySeconds: 30
           periodSeconds: 10
